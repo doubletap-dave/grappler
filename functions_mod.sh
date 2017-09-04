@@ -144,7 +144,6 @@ restart_me() {
   echo -n "Press any key to restart..."
   read -rsn1
   reboot
-  
 }
 
 #### INSTALLATION
