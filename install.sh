@@ -19,8 +19,10 @@ rootCheck() {
 rootCheck
 
 # Create aliases
-alias install="sudo yum install -y"
-alias installd="sudo dnf install -y"
+aliasCreate() {
+	alias install="sudo yum install -y"
+	alias installd="sudo dnf install -y"
+}
 
 # Create installation log folder
 makeDirs() {
@@ -93,11 +95,11 @@ restartMe() {
 
 # INSTALL ALL THE THINGS!
 installUpdate() {
-	required && dnf update -y && docker && grafana && influxdb && telegraf && graphite && checkOwner && restartMe
+	aliasCreate && required && dnf update -y && docker && grafana && influxdb && telegraf && graphite && checkOwner && restartMe
 }
 
 installNoUpdate() {
-	required && docker && grafana && influxdb && telegraf && graphite && checkOwner && restartMe
+	aliasCreate && required && docker && grafana && influxdb && telegraf && graphite && checkOwner && restartMe
 }
 
 makeDirs
