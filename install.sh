@@ -99,16 +99,16 @@ installNoUpdate() {
 	required && docker && grafana && influxdb && telegraf && graphite && restartMe
 }
 
+showLogo
 while true; do
-    showLogo
     echo -e "\nDo you want to update your system? [y/n]: "
     read onsey
     case $onsey in
         [yY] ) installUpdate; 
-		break
+		break;
 		;; 
         [nN] ) installNoUpdate; 
-		break
+		break;
 		;;
            * ) 
 		echo -e "Please answer 'y' or 'n' "
