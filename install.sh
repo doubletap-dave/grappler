@@ -89,11 +89,11 @@ restartMe() {
 
 # INSTALL ALL THE THINGS!
 installUpdate() {
-	aliasCreate && required && dnf update -y && docker && grafana && influxdb && telegraf && graphite && checkOwner && restartMe
+	required && dnf update -y && docker && grafana && influxdb && telegraf && graphite && checkOwner && restartMe
 }
 
 installNoUpdate() {
-	aliasCreate && required && docker && grafana && influxdb && telegraf && graphite && checkOwner && restartMe
+	required && docker && grafana && influxdb && telegraf && graphite && checkOwner && restartMe
 }
 
 makeDirs
