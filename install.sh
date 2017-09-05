@@ -20,7 +20,7 @@ rootCheck
 
 # Create aliases
 aliasCreate() {
-	alias install="sudo yum install -y"
+	alias instally="sudo yum install -y"
 	alias installd="sudo dnf install -y"
 }
 
@@ -78,7 +78,7 @@ checkIp
 
 # PREREQ: Required packages installer
 required() {
-	install epel-release && install dnf dnf-plugins-core newt && dnf makecache fast
+	instally epel-release && instally dnf dnf-plugins-core newt && dnf makecache fast
 	installd device-mapper-persistent-data lvm2 sshpass net-snmp net-snmp-devel.x86_64 net-snmp-utils.x86_64 open-vm-tools
 }
 
