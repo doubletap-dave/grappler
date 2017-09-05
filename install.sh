@@ -54,11 +54,11 @@ loadHelpers() {
 showLogo() {
 	clear
 	echo "
-		  ____ ____ ____ ___  ___  _    ____ ____ 
-		  | __ |__/ |__| |__] |__] |    |___ |__/ 
-		  |__] |  \ |  | |    |    |___ |___ |  \ 
+		____ ____ ____ ___  ___  _    ____ ____ 
+		| __ |__/ |__| |__] |__] |    |___ |__/ 
+		|__] |  \ |  | |    |    |___ |___ |  \ 
                                         
-		       Grafana stack installer v1.0
+		     Grafana stack installer v1.0
 "
 }
 
@@ -92,26 +92,22 @@ restartMe() {
 
 # INSTALL ALL THE THINGS!
 installUpdate() {
-	required && dnf update -y && docker && grafana && influxdb && telegraf && graphite && restartMe
+	required && dnf update -y && docker && grafana && influxdb && telegraf && graphite && checkOwner && restartMe
 }
 
 installNoUpdate() {
-	required && docker && grafana && influxdb && telegraf && graphite && restartMe
+	required && docker && grafana && influxdb && telegraf && graphite && checkOwner && restartMe
 }
 
 showLogo
 while true; do
-    echo -e "\nDo you want to update your system? [y/n]: "
+    echo -e "Welcome to Grappler, the Docker/Grafana/InfluxDB and Graphite Install-o-matic 9000!"
+    echo
+    echo -e "Do you want to update your system? [y/n]: "
     read onsey
     case $onsey in
-        [yY] ) installUpdate; 
-		break;
-		;; 
-        [nN] ) installNoUpdate; 
-		break;
-		;;
-           * ) 
-		echo -e "Please answer 'y' or 'n' "
-		;;
+        [yY] ) makeDirs && getHelpers && loadHelpers && installUpdate ; break;; 
+        [nN] ) makeDirs && getHelpers && loadHelpers && installNoUpdate; break;;
+           * ) echo -e "Please answer 'y' or 'n' ";;
     esac
 done
