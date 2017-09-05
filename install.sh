@@ -27,6 +27,7 @@ makeDirs() {
 	echo -e "Making installer directories...\n"
 	mkdir $HOME/grappler && mkdir $HOME/grappler/updaters
 	mkdir $HOME/grappler/helpers && mkdir $HOME/grappler/log
+	mkdir $HOME/grappler/phases
 }
 
 # Get helper scripts
@@ -99,6 +100,10 @@ installNoUpdate() {
 	required && docker && grafana && influxdb && telegraf && graphite && checkOwner && restartMe
 }
 
+makeDirs
+getHelpers
+loadHelpers
+
 showLogo
 while true; do
     echo -e "Welcome to Grappler, the Docker/Grafana/InfluxDB and Graphite Install-o-matic 9000!"
@@ -106,8 +111,8 @@ while true; do
     echo -e "Do you want to update your system? [y/n]: "
     read onsey
     case $onsey in
-        [yY] ) makeDirs && getHelpers && loadHelpers && installUpdate ; break;; 
-        [nN] ) makeDirs && getHelpers && loadHelpers && installNoUpdate; break;;
+        [yY] ) installUpdate ; break;; 
+        [nN] ) installNoUpdate; break;;
            * ) echo -e "Please answer 'y' or 'n' ";;
     esac
 done
