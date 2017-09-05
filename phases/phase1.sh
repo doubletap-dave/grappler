@@ -88,7 +88,7 @@ dockerAddRepo() {
 
 # PHASE 1c: DOCKER: Install Docker
 dockerInstall() {
-	installd docker-ce
+	sudo dnf install -y docker-ce
 }
 
 # PHASE 1d: DOCKER: Run and Enable :)

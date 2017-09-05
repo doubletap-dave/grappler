@@ -18,13 +18,6 @@ rootCheck() {
 }
 rootCheck
 
-# Create aliases
-aliasCreate() {
-	alias instally="sudo yum install -y"
-	alias installd="sudo dnf install -y"
-}
-aliasCreate
-
 # Create installation log folder
 makeDirs() {
 	echo -e "Making installer directories...\n"
@@ -79,8 +72,8 @@ checkIp
 
 # PREREQ: Required packages installer
 required() {
-	instally epel-release && instally dnf dnf-plugins-core newt && dnf makecache fast
-	installd device-mapper-persistent-data lvm2 sshpass net-snmp net-snmp-devel.x86_64 net-snmp-utils.x86_64 open-vm-tools
+	sudo yum install -y epel-release && sudo yum install -y dnf dnf-plugins-core && dnf makecache fast
+	sudo dnf install -y device-mapper-persistent-data lvm2 sshpass net-snmp net-snmp-devel.x86_64 net-snmp-utils.x86_64 open-vm-tools
 }
 
 restartMe() {
