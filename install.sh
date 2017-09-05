@@ -23,6 +23,7 @@ aliasCreate() {
 	alias instally="sudo yum install -y"
 	alias installd="sudo dnf install -y"
 }
+aliasCreate
 
 # Create installation log folder
 makeDirs() {
